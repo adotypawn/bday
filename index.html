@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Special Birthday 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="hearts"></div>
+
+  <main class="app">
+    <!-- 1. Intro -->
+    <section class="screen active" id="intro">
+      <div class="intro-card">
+        <div class="typing">A little surprise for you...</div>
+        <h1>Happy<br><span>Birthday</span></h1>
+        <p>Scan the code / tap the button to begin</p>
+        <button class="primary" data-go="envelope">Open Surprise ✨</button>
+      </div>
+    </section>
+
+    <!-- 2. Envelope -->
+    <section class="screen" id="envelope">
+      <div class="screen-title">Press the Envelope</div>
+      <button class="envelope" id="openEnvelope" aria-label="Buka amplop">
+        <div class="flap"></div>
+        <div class="paper">
+          <strong>For You</strong>
+          <span>💌</span>
+        </div>
+        <div class="seal">♥</div>
+      </button>
+      <p class="script">tap to lanjut</p>
+    </section>
+
+    <!-- 3. Surprise -->
+    <section class="screen" id="surprise">
+      <div class="screen-title">Choose the Surprise</div>
+      <div class="surprises">
+        <button class="surprise" data-go="message"><span>📷</span><small>Memory</small></button>
+        <button class="surprise" data-go="music"><span>⏰</span><small>Wish</small></button>
+        <button class="surprise" data-go="gallery"><span>💿</span><small>Music</small></button>
+        <button class="surprise" data-go="letter"><span>🎁</span><small>Gift</small></button>
+      </div>
+      <p class="hint">Pilih salah satu kejutan 💗</p>
+    </section>
+
+    <!-- 4. Message -->
+    <section class="screen" id="message">
+      <button class="back" data-go="surprise">BACK ◀</button>
+      <div class="message-layout">
+        <div class="rose">🌹</div>
+        <div class="letter-paper">
+          <h2>Untuk Kamu</h2>
+          <p>
+            Selamat ulang tahun, sayang. Di hari spesialmu ini, aku cuma mau bilang
+            terima kasih karena sudah hadir ke dunia dan membawa begitu banyak
+            kebahagiaan ke hidupku.
+          </p>
+          <p>
+            Kamu adalah salah satu hal terindah yang pernah hadir dalam hidupku.
+            Semoga hari-harimu selalu dipenuhi senyum, kesehatan, dan hal-hal baik.
+          </p>
+          <p class="signature">With love,<br><b>Someone who loves you ♥</b></p>
+        </div>
+        <div class="photo-frame">
+          <img src="assets/photo1.jpg" alt="Foto kenangan" onerror="this.style.display='none';this.parentElement.classList.add('empty-photo')">
+          <span>YOUR<br>PHOTO</span>
+        </div>
+      </div>
+      <div class="mini-player">
+        <button id="musicToggle">▶</button>
+        <span>Play Music</span>
+      </div>
+    </section>
+
+    <!-- 5. Music -->
+    <section class="screen" id="music">
+      <button class="back" data-go="surprise">BACK ◀</button>
+      <div class="screen-title">A Song For You</div>
+      <div class="music-card">
+        <div class="record">♫</div>
+        <h2>Our Favorite Song</h2>
+        <p>Tambahkan file <b>music.mp3</b> ke folder <b>assets</b>.</p>
+        <div class="controls">
+          <button id="playBtn">▶</button>
+          <input id="progress" type="range" min="0" max="100" value="0">
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Gallery -->
+    <section class="screen" id="gallery">
+      <button class="back" data-go="surprise">BACK ◀</button>
+      <div class="screen-title">Our Memories</div>
+      <div class="gallery">
+        <div class="polaroid"><img src="assets/photo1.jpg" alt="Memory 1"><span>Memory #1</span></div>
+        <div class="polaroid"><img src="assets/photo2.jpg" alt="Memory 2"><span>Memory #2</span></div>
+        <div class="polaroid"><img src="assets/photo3.jpg" alt="Memory 3"><span>Memory #3</span></div>
+      </div>
+      <p class="hint">Ganti foto di folder <b>assets</b> dengan foto kamu.</p>
+    </section>
+
+    <!-- 7. Gift -->
+    <section class="screen" id="letter">
+      <button class="back" data-go="surprise">BACK ◀</button>
+      <div class="gift-wrap">
+        <div class="screen-title">One More Thing...</div>
+        <button class="gift" id="giftBtn"><span>🎁</span></button>
+        <div class="gift-message" id="giftMessage">
+          <h2>Surprise! 💖</h2>
+          <p>Semoga semua keinginan baikmu satu per satu menjadi kenyataan.</p>
+          <p class="script">Happy Birthday, Beautiful ✨</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <audio id="audio" src="assets/music.mp3" preload="metadata"></audio>
+  <script src="script.js"></script>
+</body>
+</html>

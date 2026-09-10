@@ -1,0 +1,73 @@
+*{box-sizing:border-box}
+:root{--pink:#ff0aa7;--deep:#25001f;--purple:#7d006d;--white:#fff8fc}
+html,body{margin:0;width:100%;height:100%;font-family:Montserrat,Arial,sans-serif;background:#160012;color:white;overflow:hidden}
+body{background:linear-gradient(110deg,#180014 0%,#64004f 42%,#ff08ad 100%)}
+button{font:inherit;border:0;cursor:pointer}
+.app{width:100%;height:100%;position:relative}
+.screen{position:absolute;inset:0;padding:clamp(24px,5vw,70px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:scale(.98);transition:.55s ease}
+.screen.active{opacity:1;visibility:visible;transform:scale(1)}
+.screen:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.08),transparent 30%),radial-gradient(circle at 85% 80%,rgba(255,0,180,.16),transparent 35%);pointer-events:none}
+.intro-card{text-align:center;position:relative;z-index:2}
+.typing{letter-spacing:3px;font-size:12px;text-transform:uppercase;opacity:.75}
+h1{font-family:"Great Vibes",cursive;font-size:clamp(78px,14vw,180px);line-height:.78;font-weight:400;margin:25px 0}
+h1 span{color:#ffd7f2;text-shadow:0 0 25px rgba(255,0,190,.5)}
+.intro-card p{opacity:.8;font-size:13px}
+.primary{margin-top:20px;padding:15px 27px;border-radius:999px;background:#5bcf45;color:#11200e;font-weight:800;box-shadow:0 7px 0 #287c21,0 15px 35px rgba(0,0,0,.25)}
+.screen-title,.script{font-family:"Great Vibes",cursive;font-weight:400}
+.screen-title{font-size:clamp(50px,8vw,105px);margin-bottom:35px;color:#fff1fa;text-shadow:0 4px 20px rgba(0,0,0,.25);position:relative;z-index:2}
+.script{font-size:30px;color:#ffe5f5}
+.envelope{position:relative;width:min(390px,72vw);aspect-ratio:1.6;background:#fffaf0;box-shadow:0 20px 50px rgba(0,0,0,.35);transition:.35s;z-index:3}
+.envelope:hover{transform:translateY(-7px)}
+.envelope:before,.envelope:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid;z-index:2}
+.envelope:before{left:0;border-width:0 0 100% 50%;border-color:transparent transparent #f0eadf transparent}
+.envelope:after{right:0;border-width:0 50% 100% 0;border-color:transparent #e7dfd1 transparent transparent}
+.flap{position:absolute;top:0;left:0;width:100%;height:65%;background:#fffdf7;clip-path:polygon(0 0,100% 0,50% 100%);border-bottom:1px solid #d5cec3;z-index:4;transform-origin:top;transition:.8s}
+.paper{position:absolute;left:10%;right:10%;top:12%;height:70%;background:#fff;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#5a1647;font-family:"Great Vibes";font-size:35px;transition:.8s}
+.paper span{font-family:Arial;font-size:25px;margin-top:5px}
+.seal{position:absolute;z-index:5;left:50%;top:58%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#ff68da,#a4008e 70%);box-shadow:0 5px 15px #700060;color:white;font-size:27px;transition:.8s}
+.envelope.open .flap{transform:rotateX(180deg)}
+.envelope.open .paper{transform:translateY(-45%)}
+.envelope.open .seal{transform:translate(-50%,-90%) scale(.7);opacity:0}
+.envelope.open{transform:translateY(-10px)}
+.surprises{display:flex;gap:clamp(14px,4vw,50px);flex-wrap:wrap;justify-content:center;z-index:2}
+.surprise{background:transparent;color:white;width:130px;display:flex;flex-direction:column;align-items:center;gap:12px;transition:.3s}
+.surprise span{width:115px;height:115px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);font-size:55px;box-shadow:inset 0 0 25px rgba(255,255,255,.05),0 15px 30px rgba(0,0,0,.18)}
+.surprise small{font-family:"Great Vibes";font-size:30px}
+.surprise:hover{transform:translateY(-10px) scale(1.05)}
+.hint{opacity:.72;font-size:12px;z-index:2}
+.back{position:absolute;right:5%;top:7%;background:#5bcf45;color:#10220b;font-weight:900;padding:14px 27px;border-radius:999px;box-shadow:0 7px 0 #287c21;z-index:5}
+.message-layout{position:relative;width:min(1050px,90vw);min-height:500px;z-index:2}
+.letter-paper{position:absolute;left:4%;top:20px;width:min(650px,68vw);padding:55px 65px 45px;background:#fffdf6;color:#542a38;box-shadow:0 20px 45px rgba(0,0,0,.28);transform:rotate(-4deg);font-family:Georgia,serif;font-size:19px;line-height:1.55}
+.letter-paper h2{font-family:"Great Vibes";font-size:58px;font-weight:400;text-align:center;margin:0 0 15px;color:#7d006d}
+.signature{text-align:right;font-family:"Great Vibes";font-size:24px}
+.photo-frame{position:absolute;right:4%;top:55px;width:300px;padding:12px;background:#d7b66c;box-shadow:0 15px 35px rgba(0,0,0,.35);transform:rotate(6deg);border:8px solid #e2c985;min-height:260px;display:grid;place-items:center;color:#7a1e3b;text-align:center}
+.photo-frame img{width:100%;height:280px;object-fit:cover;display:block}
+.photo-frame.empty-photo{background:linear-gradient(135deg,#e7d8b0,#9d7c3b);font-family:"Great Vibes";font-size:38px}
+.photo-frame.empty-photo img{display:none}
+.rose{position:absolute;left:-25px;bottom:10px;font-size:150px;z-index:4;filter:drop-shadow(0 10px 10px rgba(0,0,0,.25))}
+.mini-player{position:absolute;bottom:4%;left:50%;transform:translateX(-50%);background:#070707;border-radius:50%;width:135px;height:135px;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:6;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.mini-player button,.controls button{background:#ff3434;color:#fff;border-radius:50%;width:48px;height:48px;font-size:18px}
+.mini-player span{font-family:Georgia;font-size:13px;margin-top:5px}
+.music-card{width:min(600px,88vw);padding:40px;text-align:center;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.18);border-radius:30px;z-index:2;backdrop-filter:blur(10px)}
+.record{width:170px;height:170px;margin:auto;border-radius:50%;display:grid;place-items:center;background:repeating-radial-gradient(circle,#111 0 4px,#333 5px 7px);box-shadow:0 0 0 10px #191919,0 20px 50px rgba(0,0,0,.3);font-size:60px}
+.music-card h2{font-family:"Great Vibes";font-size:48px;font-weight:400;margin:25px 0 5px}
+.music-card p{font-size:12px;opacity:.7}
+.controls{display:flex;align-items:center;gap:15px;margin-top:25px}
+#progress{width:100%;accent-color:#ff35bb}
+.gallery{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;z-index:2}
+.polaroid{background:#fff;color:#412230;padding:10px 10px 25px;box-shadow:0 15px 35px rgba(0,0,0,.3);transform:rotate(-3deg);transition:.3s}
+.polaroid:nth-child(2){transform:rotate(4deg);margin-top:20px}.polaroid:nth-child(3){transform:rotate(-1deg)}
+.polaroid:hover{transform:translateY(-10px) rotate(0)}
+.polaroid img{width:190px;height:220px;object-fit:cover;background:#eadde2;display:block}
+.polaroid span{font-family:"Great Vibes";font-size:25px;display:block;text-align:center;margin-top:8px}
+.gift-wrap{text-align:center;z-index:2}.gift{font-size:130px;background:transparent;filter:drop-shadow(0 20px 20px rgba(0,0,0,.3));transition:.5s}.gift:hover{transform:scale(1.1) rotate(-4deg)}
+.gift-message{display:none;max-width:500px;background:#fff8fc;color:#5a163e;padding:30px;border-radius:25px;box-shadow:0 20px 50px rgba(0,0,0,.3)}.gift-message.show{display:block;animation:pop .5s ease}.gift-message h2{font-family:"Great Vibes";font-size:48px;margin:0}
+#hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:10}.heart{position:absolute;bottom:-30px;animation:float linear forwards;opacity:.7}
+@keyframes float{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+@media(max-width:700px){
+ .screen{padding:22px}
+ .screen-title{font-size:50px;text-align:center;margin-bottom:25px}
+ .surprise{width:90px}.surprise span{width:80px;height:80px;font-size:38px}.surprise small{font-size:25px}
+ .message-layout{min-height:560px}.letter-paper{left:0;top:0;width:100%;padding:35px 25px;font-size:14px;line-height:1.45;transform:rotate(-2deg)}.letter-paper h2{font-size:48px}.photo-frame{width:150px;right:3%;top:340px;min-height:160px;padding:7px;border-width:4px}.photo-frame img{height:150px}.rose{font-size:80px;left:-5px;bottom:55px}.mini-player{width:100px;height:100px;bottom:2%}.mini-player button{width:38px;height:38px}.back{top:3%;right:4%;padding:10px 17px;font-size:11px}
+ .polaroid img{width:125px;height:150px}.polaroid{padding:7px 7px 18px}.polaroid span{font-size:20px}
+}

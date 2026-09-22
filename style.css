@@ -79,3 +79,30 @@ button, a{ position:relative; z-index:50; }
   box-shadow:0 10px 20px -8px rgba(224,47,133,0.6);
 }
 .slide-play-btn svg{ width:22px;height:22px; }
+
+/* ---------- animasi saat kotak dipencet ---------- */
+#mystery-box.box-open-anim{
+  animation: box-pop .5s ease forwards;
+}
+@keyframes box-pop{
+  0%{ transform: scale(1) rotate(0deg); opacity:1; }
+  35%{ transform: scale(1.18) rotate(-4deg); opacity:1; }
+  70%{ transform: scale(1.08) rotate(3deg); opacity:.9; }
+  100%{ transform: scale(1.35) rotate(0deg); opacity:0; }
+}
+
+.burst-particle{
+  position:fixed;
+  left:50%; top:42%;
+  font-size:22px;
+  line-height:1;
+  pointer-events:none;
+  z-index:60;
+  transform: translate(-50%,-50%) scale(.4);
+  animation: burst-fly .9s cubic-bezier(.2,.7,.3,1) forwards;
+  will-change: transform, opacity;
+}
+@keyframes burst-fly{
+  0%{ transform: translate(-50%,-50%) scale(.4); opacity:1; }
+  100%{ transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.15); opacity:0; }
+}

@@ -21,11 +21,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const content3 = document.getElementById('hero-content-3');
     const bgMusic = document.getElementById('bg-music');
 
+    // --- animasi burst hati/sparkle saat kotak dibuka ---
+    function spawnBurst() {
+        const emojis = ['💖', '✨', '💕', '🌸', '💗'];
+        const total = 18;
+        for (let i = 0; i < total; i++) {
+            const el = document.createElement('div');
+            el.className = 'burst-particle';
+            el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            const angle = (Math.PI * 2 * i) / total + (Math.random() * 0.5 - 0.25);
+            const dist = 110 + Math.random() * 170;
+            el.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+            el.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+            el.style.animationDelay = (Math.random() * 80) + 'ms';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 1100);
+        }
+    }
+
     if (mysteryBox) {
         mysteryBox.addEventListener('click', function() {
-            this.style.opacity = '0';
             this.style.pointerEvents = 'none';
-            setTimeout(() => { this.style.display = 'none'; }, 300);
+            this.classList.add('box-open-anim');
+            spawnBurst();
+            setTimeout(() => { this.style.display = 'none'; }, 500);
 
             if (bgMusic) {
                 bgMusic.play().catch(error => {
